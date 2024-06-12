@@ -10,8 +10,9 @@ import java.sql.SQLException;
  *
  * @author kevin
  */
+
 public class DataBaseConnection {
-    private static final String url = "jdbc:mysql://127.0.0.1:3306/hospitalpbo"; 
+    private static final String url = "jdbc:mysql://localhost:3306/hospitalpbo"; 
     private static final String user = "root";
     private static final String password = "";
     
@@ -20,7 +21,11 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(url, user, password);
             
-        } catch (Exception e) {
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+             System.err.println(e.getCause());
+        }
+        catch (Exception e) {
             System.err.println("Failed to connect to the database.");
              e.printStackTrace();
         }

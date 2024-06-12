@@ -201,7 +201,11 @@ public class Register extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 215, 0));
         jLabel1.setText("Register Page");
 
+<<<<<<< Updated upstream
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
+=======
+        jTextArea1.setBackground(new java.awt.Color(255, 165, 0));
+>>>>>>> Stashed changes
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea1.setRows(5);
