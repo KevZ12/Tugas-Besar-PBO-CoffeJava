@@ -66,9 +66,14 @@ public class AppointmentController {
             }
         } catch (SQLException e) {
             if (e.getMessage().contains("Cannot add or update a child row: a foreign key constraint fails (`hospitalpbo`.`appoiments`, CONSTRAINT `FK_Appoiments_doctors_DoctorId` FOREIGN KEY (`DoctorId`) REFERENCES `doctors` (`DoctorId`) ON DELETE CASCADE)")){
-                    JOptionPane.showMessageDialog(null, "Doctor or room not found");
+                    JOptionPane.showMessageDialog(null, "Doctor not found");
                     return;
             } 
+            
+            if (e.getMessage().contains("Cannot add or update a child row: a foreign key constraint fails (`hospitalpbo`.`appoiments`, CONSTRAINT `FK_Appoiments_rooms_RoomId` FOREIGN KEY (`RoomId`) REFERENCES `rooms` (`RoomId`) ON DELETE CASCADE)")){
+                JOptionPane.showMessageDialog(null, "Room not found");
+                return;
+            }
         }
     }
 

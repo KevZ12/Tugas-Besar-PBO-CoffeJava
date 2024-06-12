@@ -43,7 +43,6 @@ public class AppointmentDao implements IDaoAppointment {
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new SQLException("Error while adding appointment " + e.getMessage());
 
         }
