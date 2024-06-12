@@ -3,14 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package View;
-import model.Room;
+import controller.RoomController;
 import database.DataBaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import Dao.RoomDao;
 /**
  *
  * @author LENOVO
@@ -20,7 +19,7 @@ public class AddEditRoomDialog extends javax.swing.JDialog {
     /**
      * Creates new form AddEditRoomDialog
      */
-    private final RoomDao roomDao;
+    private final RoomController roomController;
     
     String RoomName = null;
     boolean isAdd;
@@ -32,7 +31,7 @@ public class AddEditRoomDialog extends javax.swing.JDialog {
         initComponents();
         this.RoomName = RoomName;
         this.isAdd = isAdd;
-        roomDao = new RoomDao();
+        roomController = new RoomController();
         
         if (!isAdd) {
             try {
@@ -184,9 +183,9 @@ public class AddEditRoomDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         
         if(isAdd){
-            roomDao.addData(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
+            roomController.addRoom(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
         } else {
-            roomDao.editData(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), RoomName);
+            roomController.editRoom(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), RoomName);
         }
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
