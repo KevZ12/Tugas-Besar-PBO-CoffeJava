@@ -65,8 +65,10 @@ public class AppointmentController {
                 JOptionPane.showMessageDialog(null, "Failed to add appointment");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error while adding appointment: " + e.getMessage());
+            if (e.getMessage().contains("Cannot add or update a child row: a foreign key constraint fails (`hospitalpbo`.`appoiments`, CONSTRAINT `FK_Appoiments_doctors_DoctorId` FOREIGN KEY (`DoctorId`) REFERENCES `doctors` (`DoctorId`) ON DELETE CASCADE)")){
+                    JOptionPane.showMessageDialog(null, "Doctor or room not found");
+                    return;
+            } 
         }
     }
 
